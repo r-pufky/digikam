@@ -9,7 +9,7 @@ set -ex
 
 URI=https://download.kde.org/stable/digikam/${1}/digikam-${1}-x86-64.appimage
 
-REGISTRY="r-pufky"
+REGISTRY="rpufky"
 CURRENT_DIR="${PWD##*/}"
 IMAGE_NAME="$CURRENT_DIR"
 VERSION="${1}"
