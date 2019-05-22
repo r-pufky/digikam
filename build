@@ -1,0 +1,24 @@
+#!/bin/bash
+# Build digikam docker image.
+if [ $# -ne 1 ]; then
+  echo "Usage: ${0} [digikam version]"
+  exit 1
+fi
+
+set -ex
+
+URI=https://download.kde.org/stable/digikam/${1}/digikam-${1}-x86-64.appimage
+
+REGISTRY="r-pufky"
+CURRENT_DIR="${PWD##*/}"
+IMAGE_NAME="$CURRENT_DIR"
+VERSION="${1}"
+
+test ! -f digikam*.appimage && wget ${URI} && chmod +x ./digikam-*.appimage
+test ! -d ./squashfs-root && ./digikam-*.appimage --appimage-extract
+
+docker build \
+  --build-arg digikam_version="Digikam ${VERSION}" \
+  -t ${REGISTRY}/${IMAGE_NAME}:${VERSION} \
+  -t ${REGISTRY}/${IMAGE_NAME}:latest \
+  .
