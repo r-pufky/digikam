@@ -1,11 +1,11 @@
-[![digikam][f8]]https://www.digikam.org/documentation/)
+[![digiKam][f8]](https://www.digiKam.org/documentation/) #digiKam
 
-DigiKam is an advanced open-source digital photo management application that
+digiKam is an advanced open-source digital photo management application that
 runs on Linux, Windows, and MacOS. The application provides a comprehensive set
 of tools for importing, managing, editing, and sharing photos and raw files.
 
-This is a docker image that uses the [Digikam AppImage][f9] combined with
-[jlesage/baseimage-gui:debian9][5t] to enable dockerized digikam usage with all
+This is a docker image that uses the [digiKam AppImage][f9] combined with
+[jlesage/baseimage-gui:debian9][5t] to enable dockerized digiKam usage with all
 plugins via any modern web browser without additional client configuration.
 
 Please read documentation on [jlesage/baseimage-gui][5t] for detailed baseimage
@@ -18,15 +18,15 @@ and should not be considered stable. Use an explicit version.
 
 All binaries are based on the [jlesage/baseimage-gui:debian9][5t] base image.
 
-| Tag    | Description                                                 | Size                                                                                                                                                                           |
-|--------|-------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| latest | Lastest official release with image changes (current 6.1.0) | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam "Get your own image badge on microbadger.com")             |
-| 6.1.0  | Digikam version 6.1.0                                       | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.1.0.svg)](https://microbadger.com/images/rpufky/digikam:6.1.0 "Get your own image badge on microbadger.com") |
+| Tag    | Description                                                   | Size                                                                                                                                                                           |
+|--------|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| latest | Lastest official release with image changes (currently 6.1.0) | [![](https://images.microbadger.com/badges/image/rpufky/digiKam.svg)](https://microbadger.com/images/rpufky/digiKam "Get your own image badge on microbadger.com")             |
+| 6.1.0  | digiKam version 6.1.0                                         | [![](https://images.microbadger.com/badges/image/rpufky/digiKam:6.1.0.svg)](https://microbadger.com/images/rpufky/digiKam:6.1.0 "Get your own image badge on microbadger.com") |
 
 ### docker
 ```
 docker create \
-  --name=digikam \
+  --name=digiKam \
   -e USER_ID=1000 \
   -e GROUP_ID=1000 \
   -e TZ=America/Los_Angeles \
@@ -35,7 +35,7 @@ docker create \
   -v /my/photo/location:/data \
   -v /etc/localtime:/etc/localtime:ro \
   --restart unless-stopped \
-  rpufky/digikam:6.1.0
+  rpufky/digiKam:6.1.0
 ```
 
 ### docker-compose
@@ -43,8 +43,8 @@ docker create \
 ---
 version: "3"
 services:
-  digikam:
-    image: rpufky/digikam:6.1.0
+  digiKam:
+    image: rpufky/digiKam:6.1.0
     environment:
       - USER_ID=1000
       - GROUP_ID=1000
@@ -151,17 +151,50 @@ VNC clients support this method.
 
 See [jlesage/baseimage-gui][5t] for additional documentation.
 
-## Digikam Setup
-TBD
-
 ## Reverse Proxy Setup
-TBD
+digiKam should be operated behing a reverse proxy to isolate access to the
+container. The following reverse proxy example assumes that you have a
+digiKam sub-domain setup.
+
+```nginx
+server {
+  listen 443 ssl http2;
+  server_name digiKam.example.com digiKam;
+
+  location / {
+    proxy_pass http://digiKam:5800/;
+  }
+
+  location /websockify {
+    proxy_pass http://digiKam:5800;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+  }
+}
+```
+* `websockify` provides the web socket connection for the browser and needs to
+  exposed for the GUI to render properly.
+
+## digiKam Setup
+When first launching digiKam the only explicit settings that must be set are the
+following:
+
+### Configure where you keep your images
+[![digiKam images][5k]]
+* Manually set to `/data` for your images.
+
+### Configure where you will store databases
+[![digiKam db][b7]]
+* Type: `SQLite`
+* Manually set to `/config` for your db.
 
 ## Licensing
-Digikam is under the [GPLv2 license as stated here][2j]. Digikam [icon image][f8] is
+digiKam is under the [GPLv2 license as stated here][2j]. digiKam [icon image][f8] is
 unmodified and copied under this license.
 
 [5t]: https://hub.docker.com/r/jlesage/baseimage-gui/
-[f9]: https://www.digikam.org/download/
-[2j]: https://invent.kde.org/kde/digikam/blob/master/COPYING
-[f8]: https://raw.githubusercontent.com/r-pufky/digikam/master/digikam_oxygen.svg
+[f9]: https://www.digiKam.org/download/
+[2j]: https://invent.kde.org/kde/digiKam/blob/master/COPYING
+[f8]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/digiKam_oxygen.svg?sanitize=true
+[5k]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/docker-setup-images.png
+[b7]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/docker-setup-db.png
