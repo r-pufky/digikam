@@ -1,4 +1,4 @@
-[![digiKam][f8]](https://www.digiKam.org/documentation/) #digiKam
+# [![digiKam][f8]](https://www.digiKam.org/documentation/) digiKam
 
 digiKam is an advanced open-source digital photo management application that
 runs on Linux, Windows, and MacOS. The application provides a comprehensive set
@@ -79,6 +79,13 @@ parameters. Only used and new default settings are listed here.
 |`VNC_PASSWORD`         | Password needed to connect to the application's GUI. See the [jlesage/baseimage-gui - VNC Password][5t] section for more details.                                                                                                                                             | (unset)   |
 |`X11VNC_EXTRA_OPTS`    | Extra options to pass to the x11vnc server running in the Docker container. **WARNING**: For advanced users. Do not use unless you know what you are doing.                                                                                                      | (unset)   |
 |`ENABLE_CJK_FONT`      | When set to `1`, open source computer font `WenQuanYi Zen Hei` is installed. This font contains a large range of Chinese/Japanese/Korean characters.                                                                                                             | `1`       |
+
+## Volumes
+
+| Volume  | Function                                   |
+|---------|--------------------------------------------|
+| /config | Stores digiKam configuration and database. |
+| /data   | User data location for images.             |
 
 ## User/Group IDs
 When using data volumes (`-v` flags), permissions issues can occur between the
@@ -196,5 +203,5 @@ unmodified and copied under this license.
 [f9]: https://www.digiKam.org/download/
 [2j]: https://invent.kde.org/kde/digiKam/blob/master/COPYING
 [f8]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/digikam_oxygen.svg?sanitize=true
-[5k]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/docker-setup-images.png
-[b7]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/docker-setup-db.png
+[5k]: https://github.com/r-pufky/digiKam/blob/master/media/digikam-setup-images.png?raw=true
+[b7]: https://github.com/r-pufky/digiKam/blob/master/media/digikam-setup-db.png?raw=true
