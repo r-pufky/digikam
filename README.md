@@ -195,6 +195,6 @@ unmodified and copied under this license.
 [5t]: https://hub.docker.com/r/jlesage/baseimage-gui/
 [f9]: https://www.digiKam.org/download/
 [2j]: https://invent.kde.org/kde/digiKam/blob/master/COPYING
-[f8]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/digiKam_oxygen.svg?sanitize=true
+[f8]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/digikam_oxygen.svg?sanitize=true
 [5k]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/docker-setup-images.png
 [b7]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/docker-setup-db.png
