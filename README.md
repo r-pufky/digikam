@@ -80,6 +80,17 @@ parameters. Only used and new default settings are listed here.
 |`X11VNC_EXTRA_OPTS`    | Extra options to pass to the x11vnc server running in the Docker container. **WARNING**: For advanced users. Do not use unless you know what you are doing.                                                                                                      | (unset)   |
 |`ENABLE_CJK_FONT`      | When set to `1`, open source computer font `WenQuanYi Zen Hei` is installed. This font contains a large range of Chinese/Japanese/Korean characters.                                                                                                             | `1`       |
 
+
+## Ports
+Here are the list of ports used by container. They can be mapped to the host
+via the `-p <HOST_PORT>:<CONTAINER_PORT>` parameter. The port number inside the
+container cannot be changed, but you are free to use any port on the host side.
+
+| Port | Required? | Description                                                                                         |
+|------|-----------|-----------------------------------------------------------------------------------------------------|
+|`5800`| Mandatory | Port used to access the application's GUI via the web interface.                                    |
+|`5900`| Optional  | Port used to access the application's GUI via the VNC protocol.  Optional if no VNC client is used. |
+
 ## Volumes
 
 | Volume  | Function                                   |
@@ -122,29 +133,22 @@ application (i.e. user defined by `USER_ID`) will claim ownership of the
 entire content of this directory.  This behavior can be changed via the
 `TAKE_CONFIG_OWNERSHIP` environment variable.
 
-## Ports
-Here is the list of ports used by container.  They can be mapped to the host
-via the `-p <HOST_PORT>:<CONTAINER_PORT>` parameter.  The port number inside the
-container cannot be changed, but you are free to use any port on the host side.
-
-| Port | Required? | Description                                                                                         |
-|------|-----------|-----------------------------------------------------------------------------------------------------|
-|`5800`| Mandatory | Port used to access the application's GUI via the web interface.                                    |
-|`5900`| Optional  | Port used to access the application's GUI via the VNC protocol.  Optional if no VNC client is used. |
-
 ## Accessing the GUI
 Assuming that container's ports are mapped to the same host's ports, the
 graphical interface of the application can be accessed via:
 
-  * A web browser:
+A web browser
 ```
-http://<HOST IP ADDR>:5800
+http://{HOST IP}:5800
 ```
 
-  * Any VNC client:
+Any VNC client
 ```
-<HOST IP ADDR>:5900
+{HOST IP}:5900
 ```
+
+However, a **[reverse proxy web based](#reverse-proxy-setup)** connection is
+preferred.
 
 ## Security
 By default, access to the application's GUI is done over an unencrypted
@@ -159,9 +163,9 @@ VNC clients support this method.
 See [jlesage/baseimage-gui][5t] for additional documentation.
 
 ## Reverse Proxy Setup
-digiKam should be operated behing a reverse proxy to isolate access to the
+digiKam should be operated behind a reverse proxy to isolate access to the
 container. The following reverse proxy example assumes that you have a
-digiKam sub-domain setup.
+digiKam sub-domain setup for nginx.
 
 ```nginx
 server {
