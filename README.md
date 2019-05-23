@@ -20,8 +20,8 @@ All binaries are based on the [jlesage/baseimage-gui:debian9][5t] base image.
 
 | Tag    | Description                                                   | Size                                                                                                                                                                           |
 |--------|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| latest | Lastest official release with image changes (currently 6.1.0) | [![](https://images.microbadger.com/badges/image/rpufky/digiKam.svg)](https://microbadger.com/images/rpufky/digiKam "Get your own image badge on microbadger.com")             |
-| 6.1.0  | digiKam version 6.1.0                                         | [![](https://images.microbadger.com/badges/image/rpufky/digiKam:6.1.0.svg)](https://microbadger.com/images/rpufky/digiKam:6.1.0 "Get your own image badge on microbadger.com") |
+| latest | Lastest official release with image changes (currently 6.1.0) | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam "Get your own image badge on microbadger.com")             |
+| 6.1.0  | digiKam version 6.1.0                                         | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.1.0.svg)](https://microbadger.com/images/rpufky/digikam:6.1.0 "Get your own image badge on microbadger.com") |
 
 ### docker
 ```
@@ -194,6 +194,14 @@ following:
 [![digiKam db][b7]]
 * Type: `SQLite`
 * Manually set to `/config` for your db.
+
+## Manually Building
+Build is currently setup to automatically pull the correct AppImage build based
+off a specific digiKam version. Only 6.1.0 and later has been tested.
+
+```bash
+./build 6.1.0
+```
 
 ## Licensing
 digiKam is under the [GPLv2 license as stated here][2j]. digiKam [icon image][f8] is
