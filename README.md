@@ -18,10 +18,10 @@ and should not be considered stable. Use an explicit version.
 
 All binaries are based on the [jlesage/baseimage-gui:debian9][5t] base image.
 
-| Tag    | Description                                                   | Size                                                                                                                                                                           |
-|--------|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| latest | Lastest official release with image changes (currently 6.1.0) | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam "Get your own image badge on microbadger.com")             |
-| 6.1.0  | digiKam version 6.1.0                                         | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.1.0.svg)](https://microbadger.com/images/rpufky/digikam:6.1.0 "Get your own image badge on microbadger.com") |
+| Tag     | Description                                                   | Size                                                                                                                                                                           |
+|---------|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| latest  | Lastest official release with image changes (currently 6.1.0) | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam "Get your own image badge on microbadger.com")             |
+| 6.1.0.0 | digiKam version 6.1.0                                         | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.1.0.svg)](https://microbadger.com/images/rpufky/digikam:6.1.0 "Get your own image badge on microbadger.com") |
 
 ### docker
 ```
