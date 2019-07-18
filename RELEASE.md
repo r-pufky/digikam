@@ -5,6 +5,10 @@ Uses semantic versioning, with an additional container version number:
 
 ## Unreleased
 
+## 6.1.0.2
+Set application permissions before add to docker layer; resulting in original
+deployment size (552MB) instead of 1GB.
+
 ## 6.1.0.1
 Address non-default permissions issue and tweak build settings for versioning
 change.

@@ -19,10 +19,10 @@ and should not be considered stable. Use an explicit version.
 All binaries are based on the [jlesage/baseimage-gui:debian9][5t] base image.
 See detailed [release notes here][b2] for older container point releases.
 
-| Tag     | Description                                           | Size                                                                                                                                                                             |
-|---------|-------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| latest  | Lastest official release with image changes (6.1.0.1) | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam "Get your own image badge on microbadger.com")               |
-| 6.1.0.1 | digiKam version 6.1.0.1                               | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.1.0.svg)](https://microbadger.com/images/rpufky/digikam:6.1.0.1 "Get your own image badge on microbadger.com") |
+| Tag     | Description                                           | Size                                                                                                                                                                               |
+|---------|-------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| latest  | Lastest official release with image changes (6.1.0.2) | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam "Get your own image badge on microbadger.com")                 |
+| 6.1.0.2 | digiKam version 6.1.0.2                               | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.1.0.2.svg)](https://microbadger.com/images/rpufky/digikam:6.1.0.2 "Get your own image badge on microbadger.com") |
 
 ### docker
 ```
@@ -36,7 +36,7 @@ docker create \
   -v /my/photo/location:/data \
   -v /etc/localtime:/etc/localtime:ro \
   --restart unless-stopped \
-  rpufky/digiKam:6.1.0.1
+  rpufky/digiKam:6.1.0.2
 ```
 
 ### docker-compose
@@ -45,7 +45,7 @@ docker create \
 version: "3"
 services:
   digiKam:
-    image: rpufky/digiKam:6.1.0.1
+    image: rpufky/digiKam:6.1.0.2
     environment:
       - USER_ID=1000
       - GROUP_ID=1000
@@ -218,4 +218,4 @@ unmodified and copied under this license.
 [f8]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/digikam_oxygen.svg?sanitize=true
 [5k]: https://github.com/r-pufky/digiKam/blob/master/media/digikam-setup-images.png?raw=true
 [b7]: https://github.com/r-pufky/digiKam/blob/master/media/digikam-setup-db.png?raw=true
-[b2]: RELEASE.md
+[b2]: https://github.com/r-pufky/digikam/blob/master/RELEASE.md

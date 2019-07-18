@@ -19,8 +19,7 @@ RUN apt-get -q update && add-pkg \
   dbus && \
   apt-get clean autoclean && \
   apt-get autoremove -y && \
-  rm -rfv /var/lib/{apt,dpkg,cache,log} && \
-  chmod o=u -Rv /digikam
+  rm -rfv /var/lib/{apt,dpkg,cache,log}
 
 ENV APP_NAME=$digikam_version \
   USER_ID=1000 \
