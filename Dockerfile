@@ -6,6 +6,9 @@ ARG digikam_version=unknown
 # image to squashfs-root for copying.
 #./digikam.appimage --appimage-extract
 
+COPY startapp.sh /startapp.sh
+COPY squashfs-root/ /digikam/
+
 # Additional libraries needed for digikam.
 # asound needed for audio.
 # udev needed for devices.
@@ -16,10 +19,8 @@ RUN apt-get -q update && add-pkg \
   dbus && \
   apt-get clean autoclean && \
   apt-get autoremove -y && \
-  rm -rf /var/lib/{apt,dpkg,cache,log}
-
-COPY startapp.sh /startapp.sh
-COPY --chown=1000:1000 squashfs-root/ /digikam/
+  rm -rfv /var/lib/{apt,dpkg,cache,log} && \
+  chmod o=u -Rv /digikam
 
 ENV APP_NAME=$digikam_version \
   USER_ID=1000 \

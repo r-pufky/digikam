@@ -5,7 +5,14 @@ Uses semantic versioning, with an additional container version number:
 
 ## Unreleased
 
-## 6.1.0.0 (6.1.0)
+## 6.1.0.1
+Address non-default permissions issue and tweak build settings for versioning
+change.
+
+Fixes:
+* #1 Setting USER_ID does not properly propagate permissions inside container.
+
+## 6.1.0 (6.1.0.0)
 Initial Digikam 6.1.0 container release.
 
 * Note: Original release did not include the extra versioning (6.1.0).
