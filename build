@@ -1,5 +1,9 @@
 #!/bin/bash
 # Build digikam docker image.
+# Digikam public key:
+#   http://keys.gnupg.net/pks/lookup?search=digikamdeveloper%40gmail.com&fingerprint=on
+# libpng zlib public key:
+#   http://keys.gnupg.net/pks/lookup?search=Glenn+Randers-Pehrson&fingerprint=on
 if [ $# -ne 2 ]; then
   echo "Usage: ${0} [digikam version] [container version]"
   exit 1
@@ -7,15 +11,34 @@ fi
 
 set -ex
 
-URI=https://download.kde.org/stable/digikam/${1}/digikam-${1}-x86-64.appimage
+DIGIKAM_PUBLIC_KEY=C2386E50
+ZLIB_PUBLIC_KEY=A16C640F
+
+APPIMAGE=digikam-${1}-x86-64.appimage
+APPIMAGE_URI=https://download.kde.org/stable/digikam/${1}/${APPIMAGE}
+
+ZLIB=zlib-1.2.9.tar.gz
+ZLIB_URI=https://ayera.dl.sourceforge.net/project/libpng/zlib/1.2.9/${ZLIB}
 
 REGISTRY="rpufky"
 CURRENT_DIR="${PWD##*/}"
 IMAGE_NAME="$CURRENT_DIR"
 VERSION="${1}.${2}"
 
-test ! -f digikam*.appimage && wget ${URI} && chmod +x ./digikam-*.appimage
-test ! -d ./squashfs-root && ./digikam-*.appimage --appimage-extract
+echo 'Downloading and verifying Digikam AppImage ...'
+test ! -f ${APPIMAGE} && wget ${APPIMAGE_URI} && wget ${APPIMAGE_URI}.sig && \
+  gpg --keyserver keys.gnupg.net --recv-keys ${DIGIKAM_PUBLIC_KEY} && \
+  gpg --verify ./${APPIMAGE}.sig ./${APPIMAGE} && \
+  chmod +x ./${APPIMAGE}
+
+echo 'Downloading and verifying zlib 1.2.9 dependency ...'
+test ! -f ${ZLIB} && wget ${ZLIB_URI} && wget ${ZLIB_URI}.asc && \
+  gpg --keyserver keys.gnupg.net --recv-keys ${ZLIB_PUBLIC_KEY} && \
+  gpg --verify ./${ZLIB}.asc./${ZLIB} && \
+  chmod +x ./${APPIMAGE}
+
+echo 'Extracting packages and preparing for container creation ...'
+test ! -d ./squashfs-root && ./${APPIMAGE} --appimage-extract && tar -xvf ${ZLIB} --directory ./squashfs-root
 chmod o=u -Rv ./squashfs-root
 
 docker build \
