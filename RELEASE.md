@@ -5,6 +5,12 @@ Uses semantic versioning, with an additional container version number:
 
 ## Unreleased
 
+## 6.3.0.0
+Digikam [6.3.0 release][9d].
+
+Release digikam 6.3.0 from 2019-09-04 build:
+https://download.kde.org/stable/digikam/6.3.0/.
+
 ## 6.2.0.0
 Digikam [6.2.0 release][8v].
 
@@ -31,5 +37,6 @@ Initial Digikam 6.1.0 container release.
 
 * Note: Original release did not include the extra versioning (6.1.0).
 
+[9d]: https://cgit.kde.org/digikam.git/tree/project/NEWS.6.3.0
 [8v]: https://cgit.kde.org/digikam.git/tree/project/NEWS.6.2.0
 [3g]: https://keepachangelog.com/en/1.0.0/

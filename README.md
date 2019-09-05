@@ -16,13 +16,16 @@ This image provides various versions that are available via tags. `latest` tag
 usually provides the latest offical release with any new docker image changes
 and should not be considered stable. Use an explicit version.
 
-All binaries are based on the [jlesage/baseimage-gui:debian9][5t] base image.
-See detailed [release notes here][b2] for older container point releases.
+* All binaries are based on the [jlesaige/baseimage-gui:debian9][5t] base image.
+* See detailed [release notes here][b2] for older container point releases.
+* Submit docker-related [bugs here][sl].
+* See digiKam [release plan here][2k].
 
 | Tag     | Description                                 | Size                                                                                                                                                                               |
 |---------|---------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| latest  | Lastest official release with image changes | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam "Get your own image badge on microbadger.com")                 |
-| 6.2.0.0 | digiKam version 6.2.0.0                     | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.2.0.0.svg)](https://microbadger.com/images/rpufky/digikam:6.2.0.0 "Get your own image badge on microbadger.com") |
+| latest  | digiKam version 6.3.0.0                     | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam "Get your own image badge on microbadger.com")                 |
+| 6.3.0.0 | digiKam version 6.3.0.0                     | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.3.0.0.svg)](https://microbadger.com/images/rpufky/digikam:6.3.0.0 "Get your own image badge on microbadger.com") |
+| 6.2.0.0 | digiKam version 6.2.0.0 (latest stable)     | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.2.0.0.svg)](https://microbadger.com/images/rpufky/digikam:6.2.0.0 "Get your own image badge on microbadger.com") |
 | 6.1.0.2 | digiKam version 6.1.0.2                     | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.1.0.2.svg)](https://microbadger.com/images/rpufky/digikam:6.1.0.2 "Get your own image badge on microbadger.com") |
 
 ### docker
@@ -213,6 +216,8 @@ off a specific digiKam version. Only 6.1.0 and later has been tested.
 digiKam is under the [GPLv2 license as stated here][2j]. digiKam [icon image][f8] is
 unmodified and copied under this license.
 
+[2k]: https://www.digikam.org/documentation/releaseplan/
+[sl]: https://github.com/r-pufky/digikam/issues
 [5t]: https://hub.docker.com/r/jlesage/baseimage-gui/
 [f9]: https://www.digiKam.org/download/
 [2j]: https://invent.kde.org/kde/digiKam/blob/master/COPYING
