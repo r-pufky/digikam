@@ -45,4 +45,4 @@ ENV APP_NAME=$digikam_version \
   DISPLAY_HEIGHT=1080 \
   ENABLE_CJK_FONT=1
 
-volume ['/data']
+volume ["/data"]

@@ -4,9 +4,16 @@
 #   http://keys.gnupg.net/pks/lookup?search=digikamdeveloper%40gmail.com&fingerprint=on
 # libpng zlib public key:
 #   http://keys.gnupg.net/pks/lookup?search=Glenn+Randers-Pehrson&fingerprint=on
-if [ $# -ne 2 ]; then
-  echo "Usage: ${0} [digikam version] [container version]"
+if [ $# -lt 2 ]; then
+  echo "Usage: ${0} [digikam version] [container version] <generic release>"
+  echo "  generic release: stable, latest, none (default)."
   exit 1
+fi
+
+if [[ "${3}" == 'latest' || "${3}" == 'stable' ]]; then
+  GENERIC_VERSION=${3}
+else
+  GENERIC_VERSION=''
 fi
 
 set -ex
@@ -23,26 +30,46 @@ ZLIB_URI=https://ayera.dl.sourceforge.net/project/libpng/zlib/1.2.9/${ZLIB}
 REGISTRY="rpufky"
 CURRENT_DIR="${PWD##*/}"
 IMAGE_NAME="$CURRENT_DIR"
-VERSION="${1}.${2}"
+FULL_VERSION="${1}.${2}"
+MAJOR_VERSION="${1}"
+TAGS_FULL="-t ${REGISTRY}/${IMAGE_NAME}:${FULL_VERSION}"
+TAGS_MAJOR="-t ${REGISTRY}/${IMAGE_NAME}:${MAJOR_VERSION}"
+TAGS_GENERIC="-t ${REGISTRY}/${IMAGE_NAME}:${GENERIC_VERSION}"
 
 echo 'Downloading and verifying Digikam AppImage ...'
-test ! -f ${APPIMAGE} && wget ${APPIMAGE_URI} && wget ${APPIMAGE_URI}.sig && \
+test ! -f ${APPIMAGE} && \
+  wget ${APPIMAGE_URI} && \
+  wget ${APPIMAGE_URI}.sig && \
   gpg --keyserver keys.gnupg.net --recv-keys ${DIGIKAM_PUBLIC_KEY} && \
   gpg --verify ./${APPIMAGE}.sig ./${APPIMAGE} && \
   chmod +x ./${APPIMAGE}
 
 echo 'Downloading and verifying zlib 1.2.9 dependency ...'
-test ! -f ${ZLIB} && wget ${ZLIB_URI} && wget ${ZLIB_URI}.asc && \
+test ! -f ${ZLIB} && \
+  wget ${ZLIB_URI} && \
+  wget ${ZLIB_URI}.asc && \
   gpg --keyserver keys.gnupg.net --recv-keys ${ZLIB_PUBLIC_KEY} && \
   gpg --verify ./${ZLIB}.asc./${ZLIB} && \
   chmod +x ./${APPIMAGE}
 
 echo 'Extracting packages and preparing for container creation ...'
-test ! -d ./squashfs-root && ./${APPIMAGE} --appimage-extract && tar -xvf ${ZLIB} --directory ./squashfs-root
+test ! -d ./squashfs-root && \
+  ./${APPIMAGE} --appimage-extract && \
+  cp -v ./${APPIMAGE}.sig ./squashfs-root && \
+  tar -xvf ${ZLIB} --directory ./squashfs-root
 chmod o=u -Rv ./squashfs-root
 
-docker build \
-  --build-arg digikam_version="Digikam ${VERSION}" \
-  -t ${REGISTRY}/${IMAGE_NAME}:${VERSION} \
-  -t ${REGISTRY}/${IMAGE_NAME}:latest \
-  .
+if [ ! -z ${GENERIC_VERSION} ]; then
+  docker build \
+    --build-arg digikam_version="Digikam ${MAJOR_VERSION}" \
+    ${TAGS_FULL} \
+    ${TAGS_MAJOR} \
+    ${TAGS_GENERIC} \
+    .
+else
+  docker build \
+    --build-arg digikam_version="Digikam ${MAJOR_VERSION}" \
+    ${TAGS_FULL} \
+    ${TAGS_MAJOR} \
+    .
+fi 

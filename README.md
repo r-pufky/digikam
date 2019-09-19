@@ -12,21 +12,25 @@ Please read documentation on [jlesage/baseimage-gui][5t] for detailed baseimage
 usage.
 
 ## Version Tags
-This image provides various versions that are available via tags. `latest` tag
-usually provides the latest offical release with any new docker image changes
-and should not be considered stable. Use an explicit version.
+This image provides various versions that are available via tags. Use `stable`
+or an explicit digikam version (e.g. 6.3.0), which will provide updates but
+minimize unexpected changes. 
+
+`stable` will provide the latest officially released version of digikam.
+`latest` will provide the latest digikam build and can break.
 
 * All binaries are based on the [jlesaige/baseimage-gui:debian9][5t] base image.
 * See detailed [release notes here][b2] for older container point releases.
 * Submit docker-related [bugs here][sl].
 * See digiKam [release plan here][2k].
 
-| Tag     | Description                                 | Size                                                                                                                                                                               |
-|---------|---------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| latest  | digiKam version 6.3.0.0                     | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam "Get your own image badge on microbadger.com")                 |
-| 6.3.0.0 | digiKam version 6.3.0.0                     | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.3.0.0.svg)](https://microbadger.com/images/rpufky/digikam:6.3.0.0 "Get your own image badge on microbadger.com") |
-| 6.2.0.0 | digiKam version 6.2.0.0 (latest stable)     | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.2.0.0.svg)](https://microbadger.com/images/rpufky/digikam:6.2.0.0 "Get your own image badge on microbadger.com") |
-| 6.1.0.2 | digiKam version 6.1.0.2                     | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.1.0.2.svg)](https://microbadger.com/images/rpufky/digikam:6.1.0.2 "Get your own image badge on microbadger.com") |
+| Tag    | Description               | Size                                                                                                                                                                               |
+|--------|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| latest | digikam container 6.3.0   | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam:latest "Get your own image badge on microbadger.com")                 |
+| stable | digikam container 6.3.0   | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam:stable "Get your own image badge on microbadger.com")                 |
+| 6.3.0  | digikam container 6.3.0.1 | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.3.0.svg)](https://microbadger.com/images/rpufky/digikam:6.3.0 "Get your own image badge on miicrobadger.com") |
+| 6.2.0  | digikam container 6.2.0.2 | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.2.0.svg)](https://microbadger.com/images/rpufky/digikam:6.2.0 "Get your own image badge on microbadger.com") |
+| 6.1.0  | digikam container 6.1.0.3 | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.1.0.svg)](https://microbadger.com/images/rpufky/digikam:6.1.0 "Get your own image badge on microbadger.com") |
 
 ### docker
 ```
@@ -40,7 +44,7 @@ docker create \
   -v /my/photo/location:/data \
   -v /etc/localtime:/etc/localtime:ro \
   --restart unless-stopped \
-  rpufky/digikam:6.2.0.0
+  rpufky/digikam:stable
 ```
 
 ### docker-compose
@@ -49,7 +53,7 @@ docker create \
 version: "3"
 services:
   digiKam:
-    image: rpufky/digikam:6.2.0.0
+    image: rpufky/digikam:stable
     environment:
       - USER_ID=1000
       - GROUP_ID=1000
