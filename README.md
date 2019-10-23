@@ -209,12 +209,28 @@ following:
 * Manually set to `/config` for your db.
 
 ## Manually Building
-Build is currently setup to automatically pull the correct AppImage build based
-off a specific digiKam version. Only 6.1.0 and later has been tested.
+Built using a Makefile to manage builds. Common commands below:
 
 ```bash
-./build 6.1.0 {container revision}
+make
 ```
+* Shows all make options.
+
+```bash
+sudo make stable
+```
+* Build a 'stable' package with defaults.
+
+```bash
+sudo make latest version=6.4.0 container=10 zlib_version=1.2.11
+```
+* builds 'latest' version using digikam appimage 6.4.0, zlib version 1.2.11,
+  container version 6.4.0.10.
+
+```bash
+sudo make clean
+```
+* Cleans build artifacts on the filesystem.
 
 ## Licensing
 digiKam is under the [GPLv2 license as stated here][2j]. digiKam [icon image][f8] is
