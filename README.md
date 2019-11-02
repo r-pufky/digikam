@@ -199,11 +199,11 @@ When first launching digiKam the only explicit settings that must be set are the
 following:
 
 ### Configure where you keep your images
-[![digiKam images][5k]]
+![digiKam images][5k]
 * Manually set to `/data` for your images.
 
 ### Configure where you will store databases
-[![digiKam db][b7]]
+![digiKam db][b7]
 * Type: `SQLite`
 * Manually set to `/config` for your db.
 

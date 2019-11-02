@@ -3,7 +3,7 @@
 # Public Keys
 #   Digikam: http://keys.gnupg.net/pks/lookup?search=digikamdeveloper%40gmail.com&fingerprint=on
 #
-version            = 6.3.0
+version            = 6.4.0
 container          = X
 BUILD_DIR          = digikam-build
 STAGING_DIR        = $(BUILD_DIR)/staging
@@ -60,14 +60,17 @@ docker_build:
      -t $(TAGS_FULL) \
      -t $(TAGS_MAJOR) \
      .
+	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_MAJOR) $(TAGS_FULL)'
 
 stable: digikam
 	@echo 'Tagging docker container version:$(FULL_VERSION) using digikam:$(version) as stable'
 	@docker image tag $(TAGS_MAJOR) $(TAGS_STABLE)
+	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_STABLE)'
 
 latest: digikam
 	@echo 'Tagging docker container version:$(FULL_VERSION) using digikam:$(version) as latest'
 	@docker image tag $(TAGS_MAJOR) $(TAGS_LATEST)
+	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_LATEST)'
 
 staging:
 	@echo 'Staging build for Dockerfile consumption ...'
@@ -86,6 +89,18 @@ extract:
 	 cd -
 	@cp -v $(BUILD_DIR)/$(DIGIKAM).sig $(DIGI_BUILD)
 	@chmod o=u -Rv $(DIGI_BUILD)
+
+weekly:
+	@echo 'Downloading and verifying Digikam $(version) AppImage ...'
+	@mkdir -p $(BUILD_DIR) $(GPG_DIR)
+	@chmod 0700 $(GPG_DIR)
+	@test ! -f $(BUILD_DIR)/$(DIGIKAM) && \
+   wget --directory-prefix=$(BUILD_DIR)	$(DIGIKAM_URI) || exit 0
+	@test ! -f $(BUILD_DIR)/$(DIGIKAM).sig && \
+   wget --directory-prefix=$(BUILD_DIR) $(DIGIKAM_URI).sig || exit 0
+	@gpg --homedir $(GPG_DIR) --keyserver keys.gnupg.net --recv-keys $(DIGIKAM_PUBLIC_KEY)
+	@gpg --homedir $(GPG_DIR) --verify $(BUILD_DIR)/$(DIGIKAM).sig $(BUILD_DIR)/$(DIGIKAM)
+	@chmod +x $(BUILD_DIR)/$(DIGIKAM)
 
 appimage:
 	@echo 'Downloading and verifying Digikam $(version) AppImage ...'

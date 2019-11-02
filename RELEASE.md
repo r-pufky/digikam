@@ -10,7 +10,7 @@ Digikam [6.4.0 release][7b].
 
 ## 6.4.0.0
 
-Release digikam 6.4.0 from 2019-11-02 build.
+Release digikam 6.4.0 from 2019-11-02 build:
 https://download.kde.org/stable/digikam/6.4.0/.
 
 ## 6.3.0
