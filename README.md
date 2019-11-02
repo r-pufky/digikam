@@ -1,11 +1,11 @@
-# [![digiKam][f8]](https://www.digiKam.org/documentation/) digiKam
+# [![digikam][f8]](https://www.digikam.org/documentation/) digikam
 
-digiKam is an advanced open-source digital photo management application that
+digikam is an advanced open-source digital photo management application that
 runs on Linux, Windows, and MacOS. The application provides a comprehensive set
 of tools for importing, managing, editing, and sharing photos and raw files.
 
-This is a docker image that uses the [digiKam AppImage][f9] combined with
-[jlesage/baseimage-gui:debian9][5t] to enable dockerized digiKam usage with all
+This is a docker image that uses the [digikam AppImage][f9] combined with
+[jlesage/baseimage-gui:debian9][5t] to enable dockerized digikam usage with all
 plugins via any modern web browser without additional client configuration.
 
 Please read documentation on [jlesage/baseimage-gui][5t] for detailed baseimage
@@ -22,7 +22,7 @@ minimize unexpected changes.
 * All binaries are based on the [jlesaige/baseimage-gui:debian9][5t] base image.
 * See detailed [release notes here][b2] for older container point releases.
 * Submit docker-related [bugs here][sl].
-* See digiKam [release plan here][2k].
+* See digikam [release plan here][2k].
 
 | Tag    | Description               | Size                                                                                                                                                                               |
 |--------|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -34,7 +34,7 @@ minimize unexpected changes.
 ### docker
 ```
 docker create \
-  --name=digiKam \
+  --name=digikam \
   -e USER_ID=1000 \
   -e GROUP_ID=1000 \
   -e TZ=America/Los_Angeles \
@@ -51,7 +51,7 @@ docker create \
 ---
 version: "3"
 services:
-  digiKam:
+  digikam:
     image: rpufky/digikam:stable
     environment:
       - USER_ID=1000
@@ -103,7 +103,7 @@ container cannot be changed, but you are free to use any port on the host side.
 
 | Volume  | Function                                   |
 |---------|--------------------------------------------|
-| /config | Stores digiKam configuration and database. |
+| /config | Stores digikam configuration and database. |
 | /data   | User data location for images.             |
 
 ## User/Group IDs
@@ -171,21 +171,21 @@ VNC clients support this method.
 See [jlesage/baseimage-gui][5t] for additional documentation.
 
 ## Reverse Proxy Setup
-digiKam should be operated behind a reverse proxy to isolate access to the
+digikam should be operated behind a reverse proxy to isolate access to the
 container. The following reverse proxy example assumes that you have a
-digiKam sub-domain setup for nginx.
+digikam sub-domain setup for nginx.
 
 ```nginx
 server {
   listen 443 ssl http2;
-  server_name digiKam.example.com digiKam;
+  server_name digikam.example.com digikam;
 
   location / {
-    proxy_pass http://digiKam:5800/;
+    proxy_pass http://digikam:5800/;
   }
 
   location /websockify {
-    proxy_pass http://digiKam:5800;
+    proxy_pass http://digikam:5800;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection $connection_upgrade;
   }
@@ -194,16 +194,16 @@ server {
 * `websockify` provides the web socket connection for the browser and needs to
   exposed for the GUI to render properly.
 
-## digiKam Setup
-When first launching digiKam the only explicit settings that must be set are the
+## digikam Setup
+When first launching digikam the only explicit settings that must be set are the
 following:
 
 ### Configure where you keep your images
-![digiKam images][5k]
+![digikam images][5k]
 * Manually set to `/data` for your images.
 
 ### Configure where you will store databases
-![digiKam db][b7]
+![digikam db][b7]
 * Type: `SQLite`
 * Manually set to `/config` for your db.
 
@@ -231,15 +231,15 @@ sudo make clean
 * Cleans build artifacts on the filesystem.
 
 ## Licensing
-digiKam is under the [GPLv2 license as stated here][2j]. digiKam [icon image][f8] is
+digikam is under the [GPLv2 license as stated here][2j]. digikam [icon image][f8] is
 unmodified and copied under this license.
 
 [2k]: https://www.digikam.org/documentation/releaseplan/
 [sl]: https://github.com/r-pufky/digikam/issues
 [5t]: https://hub.docker.com/r/jlesage/baseimage-gui/
-[f9]: https://www.digiKam.org/download/
-[2j]: https://invent.kde.org/kde/digiKam/blob/master/COPYING
-[f8]: https://raw.githubusercontent.com/r-pufky/digiKam/master/media/digikam_oxygen.svg?sanitize=true
-[5k]: https://github.com/r-pufky/digiKam/blob/master/media/digikam-setup-images.png?raw=true
-[b7]: https://github.com/r-pufky/digiKam/blob/master/media/digikam-setup-db.png?raw=true
+[f9]: https://www.digikam.org/download/
+[2j]: https://invent.kde.org/kde/digikam/blob/master/COPYING
+[f8]: https://raw.githubusercontent.com/r-pufky/digikam/master/media/digikam_oxygen.svg?sanitize=true
+[5k]: https://github.com/r-pufky/digikam/blob/master/media/digikam-setup-images.png?raw=true
+[b7]: https://github.com/r-pufky/digikam/blob/master/media/digikam-setup-db.png?raw=true
 [b2]: https://github.com/r-pufky/digikam/blob/master/RELEASE.md
