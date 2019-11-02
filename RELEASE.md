@@ -5,8 +5,21 @@ Uses semantic versioning, with an additional container version number:
 
 ## Unreleased
 
+## 6.4.0
+Digikam [6.4.0 release][7b].
+
+## 6.4.0.0
+
+Release digikam 6.4.0 from 2019-11-02 build.
+https://download.kde.org/stable/digikam/6.4.0/.
+
 ## 6.3.0
 Digikam [6.3.0 release][9d].
+
+## 6.3.0.2
+
+Changes:
+* Removed manual zlib dependency, only needed for 6.2.0 version.
 
 ## 6.3.0.1
 
@@ -19,6 +32,9 @@ Changes:
 
 Release digikam 6.3.0 from 2019-09-04 build:
 https://download.kde.org/stable/digikam/6.3.0/.
+
+# Deprecated Releases
+All releases below are no longer maintained.
 
 ## 6.2.0
 Digikam [6.2.0 release][8v].
@@ -61,6 +77,7 @@ change.
 Fixes:
 * #1 Setting USER_ID does not properly propagate permissions inside container.
 
+[7b]: https://cgit.kde.org/digikam.git/tree/project/NEWS.6.4.0
 [9d]: https://cgit.kde.org/digikam.git/tree/project/NEWS.6.3.0
 [8v]: https://cgit.kde.org/digikam.git/tree/project/NEWS.6.2.0
 [3g]: https://keepachangelog.com/en/1.0.0/

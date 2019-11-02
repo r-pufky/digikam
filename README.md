@@ -26,11 +26,10 @@ minimize unexpected changes.
 
 | Tag    | Description               | Size                                                                                                                                                                               |
 |--------|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| latest | digikam container 6.3.0   | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam:latest "Get your own image badge on microbadger.com")                 |
-| stable | digikam container 6.3.0   | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam:stable "Get your own image badge on microbadger.com")                 |
-| 6.3.0  | digikam container 6.3.0.1 | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.3.0.svg)](https://microbadger.com/images/rpufky/digikam:6.3.0 "Get your own image badge on miicrobadger.com") |
-| 6.2.0  | digikam container 6.2.0.2 | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.2.0.svg)](https://microbadger.com/images/rpufky/digikam:6.2.0 "Get your own image badge on microbadger.com") |
-| 6.1.0  | digikam container 6.1.0.3 | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.1.0.svg)](https://microbadger.com/images/rpufky/digikam:6.1.0 "Get your own image badge on microbadger.com") |
+| latest | digikam container 6.4.0   | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam:latest "Get your own image badge on microbadger.com")                 |
+| stable | digikam container 6.4.0   | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam:stable "Get your own image badge on microbadger.com")                 |
+| 6.4.0  | digikam container 6.4.0.0 | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.4.0.svg)](https://microbadger.com/images/rpufky/digikam:6.4.0 "Get your own image badge on miicrobadger.com") |
+| 6.3.0  | digikam container 6.3.0.2 | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.3.0.svg)](https://microbadger.com/images/rpufky/digikam:6.3.0 "Get your own image badge on miicrobadger.com") |
 
 ### docker
 ```
@@ -222,10 +221,9 @@ sudo make stable
 * Build a 'stable' package with defaults.
 
 ```bash
-sudo make latest version=6.4.0 container=10 zlib_version=1.2.11
+sudo make latest version=6.4.0 container=10
 ```
-* builds 'latest' version using digikam appimage 6.4.0, zlib version 1.2.11,
-  container version 6.4.0.10.
+* builds 'latest' version using digikam appimage 6.4.0, container version 6.4.0.10.
 
 ```bash
 sudo make clean

@@ -16,7 +16,7 @@ COPY squashfs-root/ /digikam/
 # libusb        - 6.2.0 needed for 6.2.0 usb support.
 # p11-ki        - 6.2.0 needed for pkcs#11 support.
 # libjack0      - 6.2.0 needed for audio connections.
-# libz.so.1.2.9 - 6.2.0 needed for libpng16-16.
+# libz.so.1.2.9 - 6.2.0 (only) needed for libpng16-16.
 
 RUN apt-get -q update && add-pkg \
   libusb-1.0 \
@@ -24,11 +24,7 @@ RUN apt-get -q update && add-pkg \
   libjack0 \
   libudev1 \
   libasound2 \
-  dbus \
-  build-essential && \
-  # NOTE: Debian stretch ships with libz.so.1.2.8, build and link libz.so.1.2.9 from source.
-  cd /digikam/zlib-1.2.9 && ./configure && make && make install && ln -sf /usr/local/lib/libz.so.1.2.9 /lib/x86_64-linux-gnu/libz.so.1 && \
-  apt-get remove --purge --yes build-essential && \
+  dbus && \
   apt-get clean autoclean && \
   apt-get autoremove --yes && \
   rm -rfv /var/lib/{apt,dpkg,cache,log}
