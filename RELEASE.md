@@ -5,6 +5,9 @@ Uses semantic versioning, with an additional container version number:
 
 ## Unreleased
 
+## 7.0.0
+Digikam [7.0.0-beta1 release][9f] from 2019-12-22 build.
+
 ## 6.4.0
 Digikam [6.4.0 release][7b].
 
@@ -77,6 +80,7 @@ change.
 Fixes:
 * #1 Setting USER_ID does not properly propagate permissions inside container.
 
+[9f]: https://www.digikam.org/documentation/releaseplan/
 [7b]: https://cgit.kde.org/digikam.git/tree/project/NEWS.6.4.0
 [9d]: https://cgit.kde.org/digikam.git/tree/project/NEWS.6.3.0
 [8v]: https://cgit.kde.org/digikam.git/tree/project/NEWS.6.2.0

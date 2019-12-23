@@ -24,12 +24,12 @@ minimize unexpected changes.
 * Submit docker-related [bugs here][sl].
 * See digikam [release plan here][2k].
 
-| Tag    | Description               | Size                                                                                                                                                                               |
-|--------|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| latest | digikam container 6.4.0   | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam:latest "Get your own image badge on microbadger.com")                 |
-| stable | digikam container 6.4.0   | [![](https://images.microbadger.com/badges/image/rpufky/digikam.svg)](https://microbadger.com/images/rpufky/digikam:stable "Get your own image badge on microbadger.com")                 |
-| 6.4.0  | digikam container 6.4.0.0 | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.4.0.svg)](https://microbadger.com/images/rpufky/digikam:6.4.0 "Get your own image badge on miicrobadger.com") |
-| 6.3.0  | digikam container 6.3.0.2 | [![](https://images.microbadger.com/badges/image/rpufky/digikam:6.3.0.svg)](https://microbadger.com/images/rpufky/digikam:6.3.0 "Get your own image badge on miicrobadger.com") |
+| Tag    | Description                   | Comment                                                          |
+|--------|-------------------------------|------------------------------------------------------------------|
+| latest | digikam container 7.0.0-beta1 | [7.0.0 Beta Release](https://download.kde.org/unstable/digikam/) |
+| stable | digikam container 6.4.0       | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)  |
+| 6.4.0  | digikam container 6.4.0.0     | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)  |
+| 6.3.0  | digikam container 6.3.0.2     | [6.3.0 Release](https://download.kde.org/stable/digikam/6.3.0/)  |
 
 ### docker
 ```
