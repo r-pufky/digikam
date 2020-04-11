@@ -12,6 +12,14 @@ Digikam [7.0.0-beta1 release][9f] from 2019-12-22 build.
 ## 6.4.0
 Digikam [6.4.0 release][7b].
 
+## 6.4.0.1
+
+Changes:
+* Add libgl1-mesa-dri to resolve libEGL warning message.
+
+Fixed:
+* #2
+
 ## 6.4.0.0
 
 Release digikam 6.4.0 from 2019-11-02 build:

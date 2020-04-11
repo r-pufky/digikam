@@ -24,9 +24,13 @@ RUN apt-get -q update && add-pkg \
   libjack0 \
   libudev1 \
   libasound2 \
+  pulseaudio \
+  libgl1-mesa-dri \
   dbus && \
   apt-get clean autoclean && \
   apt-get autoremove --yes && \
+  sed-patch 's/^load-module\ module-native-protocol-unix/#&/' /etc/pulse/default.pa && \
+  sed-patch 's/^#load-module\ module-native-protocol-tcp/load-module\ module-native-protocol-tcp auth-anonymous=1/' /etc/pulse/default.pa && \
   rm -rfv /var/lib/{apt,dpkg,cache,log}
 
 ENV APP_NAME=$digikam_version \

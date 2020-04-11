@@ -28,7 +28,7 @@ minimize unexpected changes.
 |--------|-------------------------------|------------------------------------------------------------------|
 | latest | digikam container 7.0.0-beta2 | [7.0.0 Beta Release](https://download.kde.org/unstable/digikam/) |
 | stable | digikam container 6.4.0       | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)  |
-| 6.4.0  | digikam container 6.4.0.0     | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)  |
+| 6.4.0  | digikam container 6.4.0.1     | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)  |
 | 6.3.0  | digikam container 6.3.0.2     | [6.3.0 Release](https://download.kde.org/stable/digikam/6.3.0/)  |
 
 ### docker
