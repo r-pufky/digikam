@@ -20,16 +20,18 @@ minimize unexpected changes.
 `latest` will provide the latest digikam build and can break.
 
 * All binaries are based on the [jlesaige/baseimage-gui:debian9][5t] base image.
-* See detailed [release notes here][b2] for older container point releases.
+* See detailed [release notes here][b2] for older container point releases. Only current and previous versions are kept.
 * Submit docker-related [bugs here][sl].
 * See digikam [release plan here][2k].
 
 | Tag    | Description                   | Comment                                                          |
 |--------|-------------------------------|------------------------------------------------------------------|
-| latest | digikam container 7.0.0-beta2 | [7.0.0 Beta Release](https://download.kde.org/unstable/digikam/) |
+| latest | digikam container 7.0.0-beta3 | [7.0.0 Beta Release](https://download.kde.org/unstable/digikam/) |
 | stable | digikam container 6.4.0       | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)  |
 | 6.4.0  | digikam container 6.4.0.1     | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)  |
 | 6.3.0  | digikam container 6.3.0.2     | [6.3.0 Release](https://download.kde.org/stable/digikam/6.3.0/)  |
+
+* On 7.0.0, all tags < 6.4.0 will be removed. Please be sure to use the `latest` or `stable` tracks.
 
 ### docker
 ```
