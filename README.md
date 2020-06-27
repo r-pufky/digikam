@@ -24,14 +24,14 @@ minimize unexpected changes.
 * Submit docker-related [bugs here][sl].
 * See digikam [release plan here][2k].
 
-| Tag    | Description                   | Comment                                                          |
-|--------|-------------------------------|------------------------------------------------------------------|
-| latest | digikam container 7.0.0-beta3 | [7.0.0 Beta Release](https://download.kde.org/unstable/digikam/) |
-| stable | digikam container 6.4.0       | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)  |
-| 6.4.0  | digikam container 6.4.0.1     | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)  |
-| 6.3.0  | digikam container 6.3.0.2     | [6.3.0 Release](https://download.kde.org/stable/digikam/6.3.0/)  |
+| Tag    | Description                | Comment                                                               |
+|--------|----------------------------|-----------------------------------------------------------------------|
+| latest | digikam container 7.0.0-rc | [7.0.0 Release Candidate](https://download.kde.org/unstable/digikam/) |
+| stable | digikam container 6.4.0    | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)       |
+| 6.4.0  | digikam container 6.4.0.1  | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)       |
+| 6.3.0  | digikam container 6.3.0.2  | [6.3.0 Release](https://download.kde.org/stable/digikam/6.3.0/)       |
 
-* On 7.0.0, all tags < 6.4.0 will be removed. Please be sure to use the `latest` or `stable` tracks.
+* On 7.0.0 release, all tags < 6.4.0 will be removed. Please be sure to use the `latest` or `stable` tracks.
 
 ### docker
 ```
