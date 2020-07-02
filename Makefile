@@ -19,7 +19,7 @@ DIGIKAM_PUBLIC_KEY = C2386E50
 DIGIKAM            = digikam-$(version)-x86-64.appimage
 PRE_DIGIKAM        = digikam-$(pre_release)-x86-64.appimage
 DIGIKAM_URI        = https://download.kde.org/stable/digikam/$(version)/${DIGIKAM}
-PRE_DIGIKAM_URI    = https://download.kde.org/unstable/digikam/${DIGIKAM}
+PRE_DIGIKAM_URI    = https://download.kde.org/unstable/digikam/${PRE_DIGIKAM}
 
 REGISTRY           = rpufky
 TAGS_MAJOR         = $(REGISTRY)/digikam:$(version)
