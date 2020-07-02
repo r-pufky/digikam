@@ -19,6 +19,8 @@ minimize unexpected changes.
 `stable` will provide the latest officially released version of digikam.
 `latest` will provide the latest digikam build and can break.
 
+Containers are auto-rebuilt weekly.
+
 * All binaries are based on the [jlesaige/baseimage-gui:debian9][5t] base image.
 * See detailed [release notes here][b2] for older container point releases. Only current and previous versions are kept.
 * Submit docker-related [bugs here][sl].
