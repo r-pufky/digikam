@@ -6,6 +6,7 @@ Uses semantic versioning, with an additional container version number:
 ## Unreleased
 
 ## 7.0.0
+Digikam [7.0.0 release][9f].
 Digikam [7.0.0-rc release][9f] from 2020-06-14 build.
 Digikam [7.0.0-beta3 release][9f] from 2020-04-22T062854 build.
 Digikam [7.0.0-beta2 release][9f] from 2020-01-27 build.

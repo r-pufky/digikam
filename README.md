@@ -16,24 +16,21 @@ This image provides various versions that are available via tags. Use `stable`
 or an explicit digikam version (e.g. 6.3.0), which will provide updates but
 minimize unexpected changes. 
 
-`stable` will provide the latest officially released version of digikam.
-`latest` will provide the latest digikam build and can break.
+* `stable` will provide the latest officially released version of digikam.
+* `latest` will provide the latest digikam build and can break.
 
-Containers are auto-rebuilt weekly.
+`stable` and `latest` containers are auto-rebuilt weekly.
 
+| Tag    | Description             | Comment                                                         |
+|--------|-------------------------|-----------------------------------------------------------------|
+| latest | digikam container 7.0.0 | [7.0.0 Release](https://download.kde.org/stable/digikam/7.0.0/) |
+| stable | digikam container 7.0.0 | [7.0.0 Release](https://download.kde.org/stable/digikam/7.0.0/) |
+
+* **On 7.0.0 release, all tags < 6.4.0 will be removed. Please be sure to use the `latest` or `stable` tracks.**
 * All binaries are based on the [jlesaige/baseimage-gui:debian9][5t] base image.
 * See detailed [release notes here][b2] for older container point releases. Only current and previous versions are kept.
 * Submit docker-related [bugs here][sl].
 * See digikam [release plan here][2k].
-
-| Tag    | Description                | Comment                                                               |
-|--------|----------------------------|-----------------------------------------------------------------------|
-| latest | digikam container 7.0.0-rc | [7.0.0 Release Candidate](https://download.kde.org/unstable/digikam/) |
-| stable | digikam container 6.4.0    | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)       |
-| 6.4.0  | digikam container 6.4.0.1  | [6.4.0 Release](https://download.kde.org/stable/digikam/6.4.0/)       |
-| 6.3.0  | digikam container 6.3.0.2  | [6.3.0 Release](https://download.kde.org/stable/digikam/6.3.0/)       |
-
-* On 7.0.0 release, all tags < 6.4.0 will be removed. Please be sure to use the `latest` or `stable` tracks.
 
 ### docker
 ```
