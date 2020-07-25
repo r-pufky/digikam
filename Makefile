@@ -29,7 +29,7 @@ TAGS_LATEST        = $(REGISTRY)/digikam:latest
 
 help:
 	@echo "USAGE:"
-	@echo "  make digikam [version=$(version)]"
+	@echo "  make digikam[_no_gpg] [version=$(version)]"
 	@echo "        Build digikam docker container with specified values."
 	@echo
 	@echo "  make stable [version=$(version)]"
@@ -38,8 +38,13 @@ help:
 	@echo "  make latest [version=$(version)]"
 	@echo "        Tags completed build as latest with specified values."
 	@echo
+	@echo "  digkam, stable, latest may be used with _no_gpg (digikam_no_gpg)"
+	@echo "  to disable GPG verification during build. Occasionally digikam GPG"
+	@echo "  certs will not be updated on time and cause build to fail."
+	@echo
 	@echo "  make pre_release"
 	@echo "        Uses static pre_release: $(pre_release) build, tags as latest."
+	@echo "        Build is nevered verifed against GPG."
 	@echo
 	@echo "  make clean"
 	@echo "        Removes all build artifacts on filesystem. Does NOT remove docker images."
@@ -55,7 +60,33 @@ help:
 
 .PHONY: help Makefile
 
-digikam: appimage extract staging docker_build
+digikam: appimage verify extract staging docker_build
+digikam_no_gpg: appimage extract staging docker_build
+
+stable: digikam
+	@echo 'Tagging docker container digikam:$(version) as stable'
+	@docker image tag $(TAGS_MAJOR) $(TAGS_STABLE)
+	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_STABLE)'
+
+stable_no_gpg: digikam_no_gpg
+	@echo 'Tagging docker container digikam:$(version) as stable'
+	@docker image tag $(TAGS_MAJOR) $(TAGS_STABLE)
+	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_STABLE)'
+
+latest: digikam
+	@echo 'Tagging docker container digikam:$(version) as latest'
+	@docker image tag $(TAGS_MAJOR) $(TAGS_LATEST)
+	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_LATEST)'
+
+latest_no_gpg: digikam_no_gpg
+	@echo 'Tagging docker container digikam:$(version) as latest'
+	@docker image tag $(TAGS_MAJOR) $(TAGS_LATEST)
+	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_LATEST)'
+
+pre_release: appimage_unstable extract_unstable staging_unstable docker_build_unstable
+	@echo 'Tagging docker container digikam:$(pre_release) as latest'
+	@docker image tag $(TAGS_PRE) $(TAGS_LATEST)
+	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_LATEST)'
 
 docker_build:
 	@echo 'Building docker container version:$(version)'
@@ -73,21 +104,6 @@ docker_build_unstable:
      --build-arg digikam_version="Digikam $(pre_releae)" \
      -t $(TAGS_PRE) \
      .
-
-stable: digikam
-	@echo 'Tagging docker container digikam:$(version) as stable'
-	@docker image tag $(TAGS_MAJOR) $(TAGS_STABLE)
-	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_STABLE)'
-
-latest: digikam
-	@echo 'Tagging docker container digikam:$(version) as latest'
-	@docker image tag $(TAGS_MAJOR) $(TAGS_LATEST)
-	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_LATEST)'
-
-pre_release: appimage_unstable extract_unstable staging_unstable docker_build_unstable
-	@echo 'Tagging docker container digikam:$(pre_release) as latest'
-	@docker image tag $(TAGS_PRE) $(TAGS_LATEST)
-	@echo 'Remember to Verify container, then push to docker hub: docker push $(TAGS_LATEST)'
 
 staging:
 	@echo 'Staging build for Dockerfile consumption ...'
@@ -107,6 +123,7 @@ staging_unstable:
 
 extract:
 	@echo 'Extracting packages ...'
+	@chmod +x $(BUILD_DIR)/$(DIGIKAM)
 	@mkdir -p $(BUILD_DIR)/$(version)
 	@test ! -d $(DIGI_BUILD) && \
 	 cd $(BUILD_DIR)/$(version) && \
@@ -133,9 +150,11 @@ appimage:
    wget --directory-prefix=$(BUILD_DIR)	$(DIGIKAM_URI) || exit 0
 	@test ! -f $(BUILD_DIR)/$(DIGIKAM).sig && \
    wget --directory-prefix=$(BUILD_DIR) $(DIGIKAM_URI).sig || exit 0
+
+verify:
+	@echo 'Validating Digikam appimage ...'
 	@gpg --homedir $(GPG_DIR) --recv-keys $(DIGIKAM_PUBLIC_KEY)
 	@gpg --homedir $(GPG_DIR) --verify $(BUILD_DIR)/$(DIGIKAM).sig $(BUILD_DIR)/$(DIGIKAM)
-	@chmod +x $(BUILD_DIR)/$(DIGIKAM)
 
 appimage_unstable:
 	@echo 'Downloading and verifying Digikam $(pre_release) AppImage from unstable ...'
@@ -145,15 +164,7 @@ appimage_unstable:
    wget --directory-prefix=$(BUILD_DIR)	$(PRE_DIGIKAM_URI) || exit 0
 	@test ! -f $(BUILD_DIR)/$(PRE_DIGIKAM).sig && \
    wget --directory-prefix=$(BUILD_DIR) $(PRE_DIGIKAM_URI).sig || exit 0
-	@gpg --homedir $(GPG_DIR) --recv-keys $(DIGIKAM_PUBLIC_KEY)
-	@gpg --homedir $(GPG_DIR) --verify $(BUILD_DIR)/$(PRE_DIGIKAM).sig $(BUILD_DIR)/$(PRE_DIGIKAM)
 	@chmod +x $(BUILD_DIR)/$(PRE_DIGIKAM)
-
-clean:
-	@echo 'Cleaning build directories ...'
-	@rm -rfv "$(BUILD_DIR)"
-
-clean_staging:
 
 clean:
 	@echo 'Cleaning build directories ...'
