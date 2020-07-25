@@ -101,7 +101,7 @@ docker_build_unstable:
 	@echo 'Building docker container version:$(pre_release)'
 	@cd $(STAGING_DIR) && \
 	 docker build \
-     --build-arg digikam_version="Digikam $(pre_releae)" \
+     --build-arg digikam_version="Digikam $(pre_release)" \
      -t $(TAGS_PRE) \
      .
 
