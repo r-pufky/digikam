@@ -182,13 +182,14 @@ server {
   server_name digikam.example.com digikam;
 
   location / {
-    proxy_pass http://digikam:5800/;
+    proxy_pass https://digikam:5800/;
   }
 
   location /websockify {
-    proxy_pass http://digikam:5800;
+    proxy_pass https://digikam:5800;
+    proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection $connection_upgrade;
+    proxy_set_header Connection "Upgrade";
   }
 }
 ```
