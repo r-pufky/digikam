@@ -1,5 +1,4 @@
-FROM jlesage/baseimage-gui:debian-9
-
+FROM jlesage/baseimage-gui:debian-9 as builder
 ARG digikam_version=unknown
 
 # FUSE not supported in docker, pre-extract
@@ -43,6 +42,10 @@ ENV APP_NAME=$digikam_version \
   CLEAN_TMP_DIR=1 \
   DISPLAY_WIDTH=1920 \
   DISPLAY_HEIGHT=1080 \
-  ENABLE_CJK_FONT=1
+  ENABLE_CJK_FONT=1 \
+  FULLSCREEN=1
+
+# Tag Metadata is a zippy window and cannot be closed without app border.
+RUN sed-patch 's/<application type="normal">/<application type="normal" title="digikam">/' /etc/xdg/openbox/rc.xml
 
 volume ["/data"]
