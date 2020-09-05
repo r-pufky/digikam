@@ -5,7 +5,7 @@
 #
 # TODO: De-duplicate stable/unstable and finish simplifying build options.
 #
-version            = 7.0.0
+version            = 7.1.0
 pre_release        = 7.0.0
 BUILD_DIR          = digikam-build
 STAGING_DIR        = $(BUILD_DIR)/staging

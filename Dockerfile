@@ -1,4 +1,4 @@
-FROM jlesage/baseimage-gui:debian-9 as builder
+FROM jlesage/baseimage-gui:debian-9
 ARG digikam_version=unknown
 
 # FUSE not supported in docker, pre-extract
