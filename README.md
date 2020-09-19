@@ -87,7 +87,9 @@ parameters. Only used and new default settings are listed here.
 |`VNC_PASSWORD`         | Password needed to connect to the application's GUI. See the [jlesage/baseimage-gui - VNC Password][5t] section for more details.                                                                                                                                             | (unset)   |
 |`X11VNC_EXTRA_OPTS`    | Extra options to pass to the x11vnc server running in the Docker container. **WARNING**: For advanced users. Do not use unless you know what you are doing.                                                                                                      | (unset)   |
 |`ENABLE_CJK_FONT`      | When set to `1`, open source computer font `WenQuanYi Zen Hei` is installed. This font contains a large range of Chinese/Japanese/Korean characters.                                                                                                             | `1`       |
-
+|`LANG`                 | System default locale.                                                                                                                                                                                                                                           | `POSIX`   |
+|`LANGUAGE`             | System fallback locale.                                                                                                                                                                                                                                          | `POSIX`   |
+|`LC_ALL`               | System locale override.                                                                                                                                                                                                                                          | `POSIX`   |
 
 ## Ports
 Here are the list of ports used by container. They can be mapped to the host

@@ -1,6 +1,25 @@
 FROM jlesage/baseimage-gui:debian-9
 ARG digikam_version=unknown
 
+ENV APP_NAME=$digikam_version \
+  USER_ID=1000 \
+  GROUP_ID=1000 \
+  UMASK=022 \
+  TZ=Etc/UTC \
+  KEEP_APP_RUNNING=1 \
+  TAKE_CONFIG_OWNERSHIP=1 \
+  CLEAN_TMP_DIR=1 \
+  DISPLAY_WIDTH=1920 \
+  DISPLAY_HEIGHT=1080 \
+  ENABLE_CJK_FONT=1 \
+  LANG=POSIX \
+  LC_ALL=POSIX \
+  LANGUAGE=POSIX \
+  FULLSCREEN=1
+
+# Install all locales for use.
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales locales-all
+
 # FUSE not supported in docker, pre-extract
 # image to squashfs-root for copying.
 #./digikam.appimage --appimage-extract
@@ -17,7 +36,10 @@ COPY squashfs-root/ /digikam/
 # libjack0      - 6.2.0 needed for audio connections.
 # libz.so.1.2.9 - 6.2.0 (only) needed for libpng16-16.
 
-RUN apt-get -q update && add-pkg \
+# Ensure en.UTF-8 set for locale.
+RUN \
+  update-locale LANG=${LANG} && \
+  apt-get --quiet update && add-pkg \
   libusb-1.0 \
   p11-kit \
   libjack0 \
@@ -30,22 +52,8 @@ RUN apt-get -q update && add-pkg \
   apt-get autoremove --yes && \
   sed-patch 's/^load-module\ module-native-protocol-unix/#&/' /etc/pulse/default.pa && \
   sed-patch 's/^#load-module\ module-native-protocol-tcp/load-module\ module-native-protocol-tcp auth-anonymous=1/' /etc/pulse/default.pa && \
+  # Tag Metadata is a zippy window and cannot be closed without app border.
+  sed-patch 's/<application type="normal">/<application type="normal" title="digikam">/' /etc/xdg/openbox/rc.xml && \
   rm -rfv /var/lib/{apt,dpkg,cache,log}
-
-ENV APP_NAME=$digikam_version \
-  USER_ID=1000 \
-  GROUP_ID=1000 \
-  UMASK=022 \
-  TZ=Etc/UTC \
-  KEEP_APP_RUNNING=1 \
-  TAKE_CONFIG_OWNERSHIP=1 \
-  CLEAN_TMP_DIR=1 \
-  DISPLAY_WIDTH=1920 \
-  DISPLAY_HEIGHT=1080 \
-  ENABLE_CJK_FONT=1 \
-  FULLSCREEN=1
-
-# Tag Metadata is a zippy window and cannot be closed without app border.
-RUN sed-patch 's/<application type="normal">/<application type="normal" title="digikam">/' /etc/xdg/openbox/rc.xml
 
 volume ["/data"]
