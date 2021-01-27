@@ -10,6 +10,7 @@ pre_release        = 7.0.0
 BUILD_DIR          = digikam-build
 STAGING_DIR        = $(BUILD_DIR)/staging
 GPG_DIR            = $(BUILD_DIR)/gpg
+GPG_KEYSERVER      = pool.sks-keyservers.net
 DIGI_BUILD         = $(BUILD_DIR)/$(version)/squashfs-root
 PRE_DIGI_BUILD     = $(BUILD_DIR)/$(pre_release)/squashfs-root
 DIGI_START         = startapp.sh
@@ -153,8 +154,8 @@ appimage:
 
 verify:
 	@echo 'Validating Digikam appimage ...'
-	@gpg --homedir $(GPG_DIR) --recv-keys $(DIGIKAM_PUBLIC_KEY)
-	@gpg --homedir $(GPG_DIR) --verify $(BUILD_DIR)/$(DIGIKAM).sig $(BUILD_DIR)/$(DIGIKAM)
+	@gpg --homedir $(GPG_DIR) --keyserver $(GPG_KEYSERVER) --recv-keys $(DIGIKAM_PUBLIC_KEY)
+	@gpg --homedir $(GPG_DIR) --keyserver $(GPG_KEYSERVER) --verify $(BUILD_DIR)/$(DIGIKAM).sig $(BUILD_DIR)/$(DIGIKAM)
 
 appimage_unstable:
 	@echo 'Downloading and verifying Digikam $(pre_release) AppImage from unstable ...'

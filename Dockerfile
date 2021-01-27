@@ -1,4 +1,4 @@
-FROM jlesage/baseimage-gui:debian-9
+FROM jlesage/baseimage-gui:debian-10
 ARG digikam_version=unknown
 
 ENV APP_NAME=$digikam_version \
