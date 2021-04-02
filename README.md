@@ -13,7 +13,7 @@ usage.
 
 ## Version Tags
 This image provides various versions that are available via tags. Use `stable`
-or an explicit digikam version (e.g. 7.1.0), which will provide updates but
+or an explicit digikam version (e.g. 7.2.0), which will provide updates but
 minimize unexpected changes. 
 
 * `stable` will provide the latest officially released version of digikam.
@@ -23,8 +23,8 @@ minimize unexpected changes.
 
 | Tag    | Description             | Comment                                                         |
 |--------|-------------------------|-----------------------------------------------------------------|
-| latest | digikam container 7.1.0 | [7.1.0 Release](https://download.kde.org/stable/digikam/7.1.0/) |
-| stable | digikam container 7.1.0 | [7.1.0 Release](https://download.kde.org/stable/digikam/7.1.0/) |
+| latest | digikam container 7.2.0 | [7.2.0 Release](https://download.kde.org/stable/digikam/7.1.0/) |
+| stable | digikam container 7.2.0 | [7.2.0 Release](https://download.kde.org/stable/digikam/7.1.0/) |
 
 * All binaries are based on the [jlesaige/baseimage-gui:debian9][5t] base image.
 * See detailed [release notes here][b2] for older container point releases. Only current and previous versions are kept.

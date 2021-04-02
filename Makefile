@@ -5,7 +5,7 @@
 #
 # TODO: De-duplicate stable/unstable and finish simplifying build options.
 #
-version            = 7.1.0
+version            = 7.2.0
 pre_release        = 7.0.0
 BUILD_DIR          = digikam-build
 STAGING_DIR        = $(BUILD_DIR)/staging
@@ -17,8 +17,8 @@ DIGI_START         = startapp.sh
 DOCKER_FILE        = Dockerfile
 
 DIGIKAM_PUBLIC_KEY = C2386E50
-DIGIKAM            = digikam-$(version)-x86-64.appimage
-PRE_DIGIKAM        = digikam-$(pre_release)-x86-64.appimage
+DIGIKAM            = digiKam-$(version)-x86-64.appimage
+PRE_DIGIKAM        = digiKam-$(pre_release)-x86-64.appimage
 DIGIKAM_URI        = https://download.kde.org/stable/digikam/$(version)/${DIGIKAM}
 PRE_DIGIKAM_URI    = https://download.kde.org/unstable/digikam/${PRE_DIGIKAM}
 
