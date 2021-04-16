@@ -30,6 +30,7 @@ minimize unexpected changes.
 * See detailed [release notes here][b2] for older container point releases. Only current and previous versions are kept.
 * Submit docker-related [bugs here][sl].
 * See digikam [release plan here][2k].
+* See [troubleshooting](#troubleshooting) for issues, like DB 10 to 11 upgrade failure.
 
 ### docker
 ```
@@ -210,6 +211,25 @@ following:
 * Type: `SQLite`
 * Manually set to `/config` for your db.
 
+### Facial recognition training data
+![digikam faces][c8]
+* Download **~335MB**
+* One time download if /config is mounted outside of docker.
+
+## Troubleshooting
+
+### Failed to update DB schema from [10 to 11][8s]
+Your digikam DB user does not have sufficient rights to modify the DB tables.
+
+By default stored functions [require superuser (root)][8h] permissions.
+
+Enable trusted stored functions.
+```bash
+mysql -u root -p
+
+set global log_bin_trust_function_creators=1;
+```
+
 ## Manually Building
 Built using a Makefile to manage builds. Common commands below:
 
@@ -237,6 +257,8 @@ sudo make clean
 digikam is under the [GPLv2 license as stated here][2j]. digikam [icon image][f8] is
 unmodified and copied under this license.
 
+[8h]: https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/
+[8s]: https://bugs.kde.org/show_bug.cgi?id=435065#c8
 [2k]: https://www.digikam.org/documentation/releaseplan/
 [sl]: https://github.com/r-pufky/digikam/issues
 [5t]: https://hub.docker.com/r/jlesage/baseimage-gui/
@@ -246,3 +268,4 @@ unmodified and copied under this license.
 [5k]: https://github.com/r-pufky/digikam/blob/master/media/digikam-setup-images.png?raw=true
 [b7]: https://github.com/r-pufky/digikam/blob/master/media/digikam-setup-db.png?raw=true
 [b2]: https://github.com/r-pufky/digikam/blob/master/RELEASE.md
+[c8]: https://github.com/r-pufky/digikam/blob/master/media/digikam-setup-faces.png?raw=true
