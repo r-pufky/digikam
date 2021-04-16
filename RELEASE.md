@@ -8,6 +8,14 @@ Uses semantic versioning, with an additional container version number:
 ## 7.2.0
 Digikam [7.2.0 release][9f].
 
+Changes:
+* Added facial recognition training data configuration.
+* Update dependencies for facial recognition.
+* DB 10 to 11 stored functions troubleshooting.
+
+Fixes:
+* #8
+ 
 ## 7.1.0
 Digikam [7.1.0 release][9f].
 

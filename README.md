@@ -214,7 +214,7 @@ following:
 ### Facial recognition training data
 ![digikam faces][c8]
 * Download **~335MB**
-* One time download if /config is mounted outside of docker.
+* One time download if `/config` is mounted outside of docker.
 
 ## Troubleshooting
 
