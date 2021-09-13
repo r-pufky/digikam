@@ -28,15 +28,16 @@ COPY startapp.sh /startapp.sh
 COPY squashfs-root/ /digikam/
 
 # Additional libraries needed for digikam:
-# asound           - 6.1.0+ needed for audio.
-# udev             - 6.1.0+ needed for devices.
-# dbus             - 6.1.0+ needed for machine id generation.
-# libusb           - 6.2.0 needed for 6.2.0 usb support.
-# p11-ki           - 6.2.0 needed for pkcs#11 support.
-# libjack0         - 6.2.0 needed for audio connections.
-# libz.so.1.2.9    - 6.2.0 (only) needed for libpng16-16.
-# libgssapi-krb5-2 - 7.2.0 needed for digikam base.
-# libnss3          - 7.2.0 needed for digikam base.
+# asound                 - 6.1.0+ needed for audio.
+# udev                   - 6.1.0+ needed for devices.
+# dbus                   - 6.1.0+ needed for machine id generation.
+# libusb                 - 6.2.0 needed for 6.2.0 usb support.
+# p11-ki                 - 6.2.0 needed for pkcs#11 support.
+# libjack0               - 6.2.0 needed for audio connections.
+# libz.so.1.2.9          - 6.2.0 (only) needed for libpng16-16.
+# libgssapi-krb5-2       - 7.2.0 needed for digikam base.
+# libnss3                - 7.2.0 needed for digikam base.
+# libimage-exiftool-perl - 7.3.0 needed for digikam base.
 # Ensure en.UTF-8 set for locale.
 RUN \
   update-locale LANG=${LANG} && \
@@ -50,6 +51,7 @@ RUN \
   libgl1-mesa-dri \
   libgssapi-krb5-2 \
   libnss3 \
+  libimage-exiftool-perl \
   dbus && \
   apt-get clean autoclean && \
   apt-get autoremove --yes && \
