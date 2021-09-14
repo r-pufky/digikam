@@ -8,6 +8,16 @@ Uses semantic versioning, with an additional container version number:
 ## 7.3.0
 Digikam [7.3.0 release][9f].
 
+Changes:
+* Update defaults for 7.3.0 release.
+* Add exiftool dependency.
+* Add Firefox Extended Support Release (ESR) w/ all language support for smugmug
+  authentication support.
+
+Fixes:
+* #11
+* #12
+
 ## 7.2.0
 Digikam [7.2.0 release][9f].
 

@@ -38,6 +38,8 @@ COPY squashfs-root/ /digikam/
 # libgssapi-krb5-2       - 7.2.0 needed for digikam base.
 # libnss3                - 7.2.0 needed for digikam base.
 # libimage-exiftool-perl - 7.3.0 needed for digikam base.
+# firefox-esr            - 7.3.0 needed for smugmug auth.   
+# firefox-esr-l10n-all   - 7.3.0 needed for smugmug auth.
 # Ensure en.UTF-8 set for locale.
 RUN \
   update-locale LANG=${LANG} && \
@@ -52,6 +54,8 @@ RUN \
   libgssapi-krb5-2 \
   libnss3 \
   libimage-exiftool-perl \
+  firefox-esr \ 
+  firefox-esr-l10n-all \
   dbus && \
   apt-get clean autoclean && \
   apt-get autoremove --yes && \
