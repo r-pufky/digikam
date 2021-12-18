@@ -5,11 +5,21 @@ runs on Linux, Windows, and MacOS. The application provides a comprehensive set
 of tools for importing, managing, editing, and sharing photos and raw files.
 
 This is a docker image that uses the [digikam AppImage][f9] combined with
-[jlesage/baseimage-gui:debian9][5t] to enable dockerized digikam usage with all
+[jlesage/baseimage-gui:debian10][5t] to enable dockerized digikam usage with all
 plugins via any modern web browser without additional client configuration.
 
 Please read documentation on [jlesage/baseimage-gui][5t] for detailed baseimage
 usage.
+
+:warning:
+The 7.4.0 release requires Debian 11 as well as mitigating [CVE-2021-44228][7g].
+
+Debian 11 baseimage has not been released stable yet; therefore a custom build
+has been created. As such, 7.4.0 will not be in the 'stable' release until
+it is publically released and the build is reproducible without patches.
+
+Build reproduction instructions are located in [Dockerfile](Dockerfile).
+:warning:
 
 ## Version Tags
 This image provides various versions that are available via tags. Use `stable`
@@ -23,7 +33,7 @@ minimize unexpected changes.
 
 | Tag    | Description             | Comment                                                         |
 |--------|-------------------------|-----------------------------------------------------------------|
-| latest | digikam container 7.3.0 | [7.3.0 Release](https://download.kde.org/stable/digikam/7.3.0/) |
+| latest | digikam container 7.4.0 | [7.4.0 Release](https://download.kde.org/stable/digikam/7.4.0/) |
 | stable | digikam container 7.3.0 | [7.3.0 Release](https://download.kde.org/stable/digikam/7.3.0/) |
 
 * All binaries are based on the [jlesaige/baseimage-gui:debian9][5t] base image.
@@ -271,3 +281,4 @@ unmodified and copied under this license.
 [b7]: https://github.com/r-pufky/digikam/blob/master/media/digikam-setup-db.png?raw=true
 [b2]: https://github.com/r-pufky/digikam/blob/master/RELEASE.md
 [c8]: https://github.com/r-pufky/digikam/blob/master/media/digikam-setup-faces.png?raw=true
+[7g]: https://nvd.nist.gov/vuln/detail/CVE-2021-44228

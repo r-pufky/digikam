@@ -1,0 +1,31 @@
+diff --git a/.github/workflows/build-baseimage.yml b/.github/workflows/build-baseimage.yml
+index 60998bd..be1d1b9 100644
+--- a/.github/workflows/build-baseimage.yml
++++ b/.github/workflows/build-baseimage.yml
+@@ -1,8 +1,8 @@
+ name: Docker Baseimage CI
+ 
+ env:
+-  DOCKERHUB_USERNAME: jlesage
+-  DOCKER_IMAGE_NAME: jlesage/baseimage-gui
++  DOCKERHUB_USERNAME: rpufky
++  DOCKER_IMAGE_NAME: rpufky/baseimage-gui
+ 
+ on:
+   push:
+diff --git a/Dockerfile b/Dockerfile
+index c8f42f5..f02ddc7 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -4,7 +4,10 @@
+ # https://github.com/jlesage/docker-baseimage-gui
+ #
+ 
+-ARG BASEIMAGE=unknown
++#ARG BASEIMAGE=unknown
++ARG BASEIMAGE=jlesage/baseimage:debian-11-v3.0.0-pre.6
++ARG BUILDPLATFORM=linux/amd64
++
+ 
+ # Define the Alpine packages to be installed into the image.
+ ARG ALPINE_PKGS="\

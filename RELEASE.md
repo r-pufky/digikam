@@ -5,6 +5,24 @@ Uses semantic versioning, with an additional container version number:
 
 ## Unreleased
 
+## 7.4.0
+Digikam [7.4.0 release][9f].
+
+:warning:
+The 7.4.0 release requires Debian 11 as well as mitigating [CVE-2021-44228][7g].
+
+Debian 11 baseimage has not been released stable yet; therefore a custom build
+has been created. As such, 7.4.0 will not be in the 'stable' release until
+it is publically released and the build is reproducible without patches.
+
+Build reproduction instructions are located in [Dockerfile](Dockerfile).
+:warning:
+
+Changes:
+* Update baseimage-gui to use Debian 11; required by Digikam.
+* Mitigate [CVE-2021-44228][7g] via Debian 11.
+* Custom baseimage-gui build until a public Debian 11 release occurs.
+
 ## 7.3.0
 Digikam [7.3.0 release][9f].
 
@@ -124,3 +142,4 @@ Fixes:
 [9d]: https://cgit.kde.org/digikam.git/tree/project/NEWS.6.3.0
 [8v]: https://cgit.kde.org/digikam.git/tree/project/NEWS.6.2.0
 [3g]: https://keepachangelog.com/en/1.0.0/
+[7g]: https://nvd.nist.gov/vuln/detail/CVE-2021-44228
