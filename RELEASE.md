@@ -5,23 +5,17 @@ Uses semantic versioning, with an additional container version number:
 
 ## Unreleased
 
+## 7.5.0
+Digikam [7.5.0 relase][9f].
+
+Changes:
+* update baseimage-gui to ubuntu-20.04 due to digikam changes.
+
 ## 7.4.0
 Digikam [7.4.0 release][9f].
 
-:warning:
-The 7.4.0 release requires Debian 11 as well as mitigating [CVE-2021-44228][7g].
-
-Debian 11 baseimage has not been released stable yet; therefore a custom build
-has been created. As such, 7.4.0 will not be in the 'stable' release until
-it is publically released and the build is reproducible without patches.
-
-Build reproduction instructions are located in [Dockerfile](Dockerfile).
-:warning:
-
 Changes:
-* Update baseimage-gui to use Debian 11; required by Digikam.
-* Mitigate [CVE-2021-44228][7g] via Debian 11.
-* Custom baseimage-gui build until a public Debian 11 release occurs.
+* update baseimage-gui to ubuntu-20.04 due to digikam changes.
 
 ## 7.3.0
 Digikam [7.3.0 release][9f].

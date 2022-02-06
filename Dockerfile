@@ -1,32 +1,4 @@
-# TODO(debian-11): Debian 11 has not been released yet for baseimage-gui.
-#     This is currently being worked on in the v4 release branch:
-#
-#     https://github.com/jlesage/docker-baseimage-gui/tree/v4
-#
-#     Digikam 7.4.0 requires libraries present in Debian 11, as well as
-#     mitigating any potential issues with CVE-2021-44228 (log4j) from any
-#     dependencies. See: https://nvd.nist.gov/vuln/detail/CVE-2021-44228
-#
-#     It has been decided to build a pre-release debian-11 image to mitigate
-#     this potential vulnerability as well as release digikam 7.4.0. It will
-#     **NOT** be considered stable until debian-11 is released for
-#     baseimage-gui.
-#
-#     Currently, this means the the build **IS NOT** reproducible without
-#     patches. These are included in patches/ to manually reproduce (with some
-#     docker user changes).
-#
-#     Manual build reproduction:
-#       git clone https://github.com/jlesage/docker-baseimage-gui
-#       cd docker-baseimage-gui
-#       git checkout remotes/origin/v4
-#       git apply ../digikam/patches/docker-baseimage-gui.3077e2c.patch
-#       docker build -t rpufky/baseimage-gui:debian-11 .
-#
-
-# TODO(debian-11): revert when debian-11 jlesage image is released.
-#FROM jlesage/baseimage-gui:debian-10
-FROM rpufky/baseimage-gui:debian-11
+FROM jlesage/baseimage-gui:ubuntu-20.04
 ARG digikam_version=unknown
 
 ENV APP_NAME=$digikam_version \
@@ -66,8 +38,8 @@ COPY squashfs-root/ /digikam/
 # libgssapi-krb5-2       - 7.2.0 needed for digikam base.
 # libnss3                - 7.2.0 needed for digikam base.
 # libimage-exiftool-perl - 7.3.0 needed for digikam base.
-# firefox-esr            - 7.3.0 needed for smugmug auth.   
-# firefox-esr-l10n-all   - 7.3.0 needed for smugmug auth.
+# firefox-esr            - 7.3.0 needed for smugmug auth (firefox on ubuntu). 
+# firefox-esr-l10n-all   - 7.3.0 needed for smugmug auth (firefox on ubuntu).
 # libgl1-mesa-glx        - 7.4.0 needed for digikam base.
 # Ensure en.UTF-8 set for locale.
 RUN \
@@ -83,8 +55,7 @@ RUN \
   libgssapi-krb5-2 \
   libnss3 \
   libimage-exiftool-perl \
-  firefox-esr \ 
-  firefox-esr-l10n-all \
+  firefox \
   libgl1-mesa-glx \
   dbus && \
   apt-get clean autoclean && \
