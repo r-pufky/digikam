@@ -5,6 +5,12 @@ Uses semantic versioning, with an additional container version number:
 
 ## Unreleased
 
+## 7.6.0
+Digikam [7.6.0 relase][9f].
+
+Changes:
+* Bump digikam release version.
+
 ## 7.5.0
 Digikam [7.5.0 relase][9f].
 
@@ -15,7 +21,7 @@ Changes:
 Digikam [7.4.0 release][9f].
 
 Changes:
-* update baseimage-gui to ubuntu-20.04 due to digikam changes.
+* update baseimage-gui to (custom) ubuntu-20.04 due to digikam changes.
 
 ## 7.3.0
 Digikam [7.3.0 release][9f].
@@ -40,7 +46,7 @@ Changes:
 
 Fixes:
 * #8
- 
+
 ## 7.1.0
 Digikam [7.1.0 release][9f].
 

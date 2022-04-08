@@ -13,8 +13,8 @@ usage.
 
 ## Version Tags
 This image provides various versions that are available via tags. Use `stable`
-or an explicit digikam version (e.g. 7.3.0), which will provide updates but
-minimize unexpected changes. 
+or an explicit digikam version (e.g. 7.6.0), which will provide updates but
+minimize unexpected changes.
 
 * `stable` will provide the latest officially released version of digikam.
 * `latest` will provide the latest digikam build and **will** break.
@@ -23,8 +23,8 @@ minimize unexpected changes.
 
 | Tag    | Description             | Comment                                                         |
 |--------|-------------------------|-----------------------------------------------------------------|
-| latest | digikam container 7.5.0 | [7.5.0 Release](https://download.kde.org/stable/digikam/7.5.0/) |
-| stable | digikam container 7.5.0 | [7.5.0 Release](https://download.kde.org/stable/digikam/7.5.0/) |
+| latest | digikam container 7.6.0 | [7.6.0 Release](https://download.kde.org/stable/digikam/7.6.0/) |
+| stable | digikam container 7.6.0 | [7.6.0 Release](https://download.kde.org/stable/digikam/7.6.0/) |
 
 * See detailed [release notes here][b2] for older container point releases. Only current and previous versions are kept.
 * Submit docker-related [bugs here][sl].
