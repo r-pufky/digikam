@@ -1,5 +1,10 @@
 # [![digikam][f8]](https://www.digikam.org/documentation/) digikam
 
+:warning: DEPRECATION: Support will end on the next major digikam release. :warning:
+
+:warning: See [migration instructions](migration.md) for details and how to migrate to
+the linuxserver digikam image. :warning:
+
 digikam is an advanced open-source digital photo management application that
 runs on Linux, Windows, and MacOS. The application provides a comprehensive set
 of tools for importing, managing, editing, and sharing photos and raw files.
@@ -30,21 +35,6 @@ minimize unexpected changes.
 * Submit docker-related [bugs here][sl].
 * See digikam [release plan here][2k].
 * See [troubleshooting](#troubleshooting) for issues, like DB 10 to 11 upgrade failure.
-
-### docker
-```
-docker create \
-  --name=digikam \
-  -e USER_ID=1000 \
-  -e GROUP_ID=1000 \
-  -e TZ=America/Los_Angeles \
-  -p 5800:5800 \
-  -v /my/docker/service/config:/config \
-  -v /my/photo/location:/data \
-  -v /etc/localtime:/etc/localtime:ro \
-  --restart unless-stopped \
-  rpufky/digikam:stable
-```
 
 ### docker-compose
 ```
@@ -232,7 +222,8 @@ set global log_bin_trust_function_creators=1;
 ```
 
 ## Manually Building
-Built using a Makefile to manage builds. Common commands below:
+Built using a Makefile to manage builds. Assumes current user is a privleged
+docker user. Common commands below:
 
 ```bash
 make
@@ -240,17 +231,17 @@ make
 * Shows all make options.
 
 ```bash
-sudo make stable
+make digikam version=7.6.0
 ```
-* Build a 'stable' package with defaults.
+* Build 'stable' version using appimage 7.6.0.
 
 ```bash
-sudo make latest version=6.4.0 container=10
+make latest version=7.6.0
 ```
-* builds 'latest' version using digikam appimage 6.4.0, container version 6.4.0.10.
+* builds 'latest' version using appimage 7.6.0.
 
 ```bash
-sudo make clean
+make clean
 ```
 * Cleans build artifacts on the filesystem.
 

@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+#
+# Migrate well-know config locations from rpufky to ls digikam config.
+#
+
+
+
+BASE='.'
+F_FORCE=0
+F_PLAYLISTS=0
+F_VIDEOS=0
+F_QUIET=0
+Y_DL='/usr/local/bin/youtube-dl'
+Y_BASE='https://www.youtube.com/user/'
+Y_OPT_QUIET=''
+Y_OPT_DOWN='--no-overwrites --continue --ignore-errors'
+Y_OPT_FORMAT='--format best --merge-output-format mkv'
+Y_OPT_WRITE='--write-thumbnail --write-description --write-info-json --write-annotations'
+Y_OPT_TEMPLATE='%(uploader_id)s/%(playlist)s/%(playlist_index)s_%(title)s/%(playlist_index)s-%(title)s.%(ext)s'
+
+USAGE="
+Migrate well-known config locations from rpufky to ls digikam config.
+
+Assumes a base ls/digikam config location has been run once. This is
+non-destructive for the source config.
+
+See https://github.com/r-pufky/digikam/blob/master/migration.md for full
+migration instructions.
+
+Usage: $0 [OPTIONS]
+
+Options:
+  -s [DIR] Source config mount (rpufky/digikam config mount). Use trailing
+           slash. Required.
+  -d [DIR] Dest config mount (ls/digikam config mount). Use trailing slash.
+           Required.
+
+Examples:
+  $0 -s /data/rp/config/ -d /data/ls/config/
+"
+
+while getopts "s:d:h" options; do
+  case "${options}" in
+    s)
+      SOURCE=${OPTARG%%/}
+      ;;
+    d)
+      DEST=${OPTARG%%/}
+      ;;
+    h)
+      echo "${USAGE}"
+      exit 1
+      ;;
+    :)
+      echo "${USAGE}"
+      exit 1
+      ;;
+  esac
+done
+
+if [ -z ${SOURCE} ] || [ -z ${DEST} ]; then
+  echo 'Error: source and destination config locations required.'
+  exit 2
+fi
+
+# Migrate user settings.
+cp -av "${DEST}/.config/digikamrc" "${DEST}/.config/digikamrc.orig"
+cp -av "${SOURCE}/xdg/config/digikamrc" "${DEST}/.config/digikamrc"
+chown --reference="${DEST}/.config/digikamrc.orig" "${DEST}/.config/digikamrc"
+chmod --reference="${DEST}/.config/digikamrc.orig" "${DEST}/.config/digikamrc"
+
+# Migrate DBs.
+find "${DEST}" -type f -name "*.db" -exec mv -v {} {}.orig \;
+cp -av "${SOURCE}"/*.db "${DEST}"
+chown --reference="${DEST}/digikam4.db.orig" "${DEST}/"*.db
+chmod --reference="${DEST}/digikam4.db.orig" "${DEST}/"*.db

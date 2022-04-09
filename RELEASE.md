@@ -8,6 +8,11 @@ Uses semantic versioning, with an additional container version number:
 ## 7.6.0
 Digikam [7.6.0 relase][9f].
 
+Added:
+* migrate_to_ls - linuxserver migration script.
+* migration.md - migration documentation.
+* Deprecation and support notice.
+
 Changes:
 * Bump digikam release version.
 

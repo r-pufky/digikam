@@ -25,6 +25,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales 
 #./digikam.appimage --appimage-extract
 
 COPY startapp.sh /startapp.sh
+COPY migrate_to_ls /migrate_to_ls
 COPY squashfs-root/ /digikam/
 
 # Additional libraries needed for digikam:
@@ -38,7 +39,7 @@ COPY squashfs-root/ /digikam/
 # libgssapi-krb5-2       - 7.2.0 needed for digikam base.
 # libnss3                - 7.2.0 needed for digikam base.
 # libimage-exiftool-perl - 7.3.0 needed for digikam base.
-# firefox-esr            - 7.3.0 needed for smugmug auth (firefox on ubuntu). 
+# firefox-esr            - 7.3.0 needed for smugmug auth (firefox on ubuntu).
 # firefox-esr-l10n-all   - 7.3.0 needed for smugmug auth (firefox on ubuntu).
 # libgl1-mesa-glx        - 7.4.0 needed for digikam base.
 # Ensure en.UTF-8 set for locale.

@@ -14,6 +14,7 @@ GPG_KEYSERVER      = pool.sks-keyservers.net
 DIGI_BUILD         = $(BUILD_DIR)/$(version)/squashfs-root
 PRE_DIGI_BUILD     = $(BUILD_DIR)/$(pre_release)/squashfs-root
 DIGI_START         = startapp.sh
+MIGRATE            = migrate_to_ls
 DOCKER_FILE        = Dockerfile
 
 DIGIKAM_PUBLIC_KEY = C2386E50
@@ -33,10 +34,10 @@ help:
 	@echo "  make digikam[_no_gpg] [version=$(version)]"
 	@echo "        Build digikam docker container with specified values."
 	@echo
-	@echo "  make stable [version=$(version)]"
+	@echo "  make stable[_no_gpg] [version=$(version)]"
 	@echo "        Tags completed build as stable with specified values."
 	@echo
-	@echo "  make latest [version=$(version)]"
+	@echo "  make latest[_no_gpg] [version=$(version)]"
 	@echo "        Tags completed build as latest with specified values."
 	@echo
 	@echo "  digkam, stable, latest may be used with _no_gpg (digikam_no_gpg)"
@@ -111,6 +112,7 @@ staging:
 	@rm -rfv $(STAGING_DIR) || exit 0
 	@mkdir -p $(STAGING_DIR) $(DOCKER_STAGING)
 	@cp -av $(DIGI_START) $(STAGING_DIR)
+	@cp -av $(MIGRATE) $(STAGING_DIR)
 	@cp -av $(DOCKER_FILE) $(STAGING_DIR)
 	@cp -av $(DIGI_BUILD) $(STAGING_DIR)
 
@@ -119,6 +121,7 @@ staging_unstable:
 	@rm -rfv $(STAGING_DIR) || exit 0
 	@mkdir -p $(STAGING_DIR) $(DOCKER_STAGING)
 	@cp -av $(DIGI_START) $(STAGING_DIR)
+	@cp -av $(MIGRATE) $(STAGING_DIR)
 	@cp -av $(DOCKER_FILE) $(STAGING_DIR)
 	@cp -av $(PRE_DIGI_BUILD) $(STAGING_DIR)
 
