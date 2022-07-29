@@ -5,6 +5,13 @@ Uses semantic versioning, with an additional container version number:
 
 ## Unreleased
 
+## 7.7.0
+Digikam [7.7.0 release][9f].
+
+Changes:
+* Bump digikam release version.
+* Updated deprecation message to final supported version (8.0).
+
 ## 7.6.0
 Digikam [7.6.0 relase][9f].
 

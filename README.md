@@ -18,7 +18,7 @@ usage.
 
 ## Version Tags
 This image provides various versions that are available via tags. Use `stable`
-or an explicit digikam version (e.g. 7.6.0), which will provide updates but
+or an explicit digikam version (e.g. 7.7.0), which will provide updates but
 minimize unexpected changes.
 
 * `stable` will provide the latest officially released version of digikam.
@@ -28,8 +28,8 @@ minimize unexpected changes.
 
 | Tag    | Description             | Comment                                                         |
 |--------|-------------------------|-----------------------------------------------------------------|
-| latest | digikam container 7.6.0 | [7.6.0 Release](https://download.kde.org/stable/digikam/7.6.0/) |
-| stable | digikam container 7.6.0 | [7.6.0 Release](https://download.kde.org/stable/digikam/7.6.0/) |
+| latest | digikam container 7.7.0 | [7.7.0 Release](https://download.kde.org/stable/digikam/7.7.0/) |
+| stable | digikam container 7.7.0 | [7.7.0 Release](https://download.kde.org/stable/digikam/7.7.0/) |
 
 * See detailed [release notes here][b2] for older container point releases. Only current and previous versions are kept.
 * Submit docker-related [bugs here][sl].
@@ -231,14 +231,14 @@ make
 * Shows all make options.
 
 ```bash
-make digikam version=7.6.0
+make digikam version=7.7.0
 ```
-* Build 'stable' version using appimage 7.6.0.
+* Build 'stable' version using appimage 7.7.0.
 
 ```bash
-make latest version=7.6.0
+make latest version=7.7.0
 ```
-* builds 'latest' version using appimage 7.6.0.
+* builds 'latest' version using appimage 7.7.0.
 
 ```bash
 make clean

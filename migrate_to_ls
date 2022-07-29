@@ -3,21 +3,6 @@
 # Migrate well-know config locations from rpufky to ls digikam config.
 #
 
-
-
-BASE='.'
-F_FORCE=0
-F_PLAYLISTS=0
-F_VIDEOS=0
-F_QUIET=0
-Y_DL='/usr/local/bin/youtube-dl'
-Y_BASE='https://www.youtube.com/user/'
-Y_OPT_QUIET=''
-Y_OPT_DOWN='--no-overwrites --continue --ignore-errors'
-Y_OPT_FORMAT='--format best --merge-output-format mkv'
-Y_OPT_WRITE='--write-thumbnail --write-description --write-info-json --write-annotations'
-Y_OPT_TEMPLATE='%(uploader_id)s/%(playlist)s/%(playlist_index)s_%(title)s/%(playlist_index)s-%(title)s.%(ext)s'
-
 USAGE="
 Migrate well-known config locations from rpufky to ls digikam config.
 
