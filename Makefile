@@ -5,8 +5,8 @@
 #
 # TODO: De-duplicate stable/unstable and finish simplifying build options.
 #
-version            = 7.7.0
-pre_release        = 7.7.0
+version            = 7.8.0
+pre_release        = 7.8.0
 BUILD_DIR          = digikam-build
 STAGING_DIR        = $(BUILD_DIR)/staging
 GPG_DIR            = $(BUILD_DIR)/gpg
